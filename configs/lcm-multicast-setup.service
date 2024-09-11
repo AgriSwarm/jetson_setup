@@ -1,0 +1,11 @@
+[Unit]
+Description=LCM Multicast Setup
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ifconfig lo multicast
+ExecStart=/sbin/route add -net 224.0.0.0 netmask 240.0.0.0 dev lo
+
+[Install]
+WantedBy=multi-user.target

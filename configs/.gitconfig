@@ -1,0 +1,38 @@
+# Using git-number (https://github.com/holygeek/git-number)
+
+[user]
+	name = AritaTomoki
+	email = arita.tomoki@keio.jp
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[alias]
+	nadd = number add
+	nres = number reset
+	rb = reset --soft HEAD^ # rollback
+	hrb = reset --hard # git hrb $HASH$ → $HASH$ までrollback
+	clr = checkout # clear
+	ch = checkout
+	nclr = number checkout 
+
+	com = !git commit -m
+	amend = !git commit --amend -m
+	lmerge = merge --no-commit # light merge
+	ireb = rebase -i
+
+	st = number --column # status with number
+	shf = show --name-only # show file
+	ndiff = number diff 
+	pdiff = diff --cached # pre-diff
+	npdiff = !git number diff --cached # pre-diff with number
+	l = !git log --oneline
+	lg = !git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+	save = !git stash save
+	load = "!f() { git stash apply --index $(git stash list | fzf | sed 's/stash@{//g' | sed \"s/}.*//g\"); }; f"
+
+	pu = "!f(){ git push origin `git rev-parse --abbrev-ref HEAD` ${1}; git pr; }; f" # push
+	pr = "!f() { echo PR Url: $(git remote show -n origin | grep \"Push  URL\" | sed \"s/.*URL: git@//g\" | sed \"s/\\.git//g\" | sed \"s/:/\\//\")/compare/develop...$(git rev-parse --abbrev-ref HEAD); }; f"
+	alias = "!f(){ git config --list  | grep ^alias\\. ;  }; f"

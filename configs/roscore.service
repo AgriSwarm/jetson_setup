@@ -1,0 +1,14 @@
+[Unit]
+Description=ROSCORE launcher
+After=NetworkManager.service
+Requires=NetworkManager.service
+
+[Service]
+User=initial
+ExecStart=/usr/bin/screen -S roscore -ADm bash -l -c 'roscore'
+Type=simple
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
