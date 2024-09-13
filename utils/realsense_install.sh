@@ -14,8 +14,10 @@ if [ ! -d "librealsense-2.55.1" ]; then
   rm librealsense.zip
 fi
 
-cd librealsense-2.55.1 && \
-mkdir build && \
+cd librealsense-2.55.1
+if [ ! -d "build" ]; then
+  mkdir build
+fi
 cd build && \
 sudo cmake .. && \
 sudo make -j4 && \
