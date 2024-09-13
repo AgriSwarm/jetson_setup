@@ -2,6 +2,7 @@
 
 # エラーが発生した場合にスクリプトを停止
 set -e
+export HOME=$(getent passwd $(logname) | cut -d: -f6)
 
 # create dirs
 mkdir -p ~/workspace/setup
