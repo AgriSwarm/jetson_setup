@@ -4,10 +4,12 @@ set -e
 cd $HOME/workspace/setup || exit 1
 
 sudo apt update && \
-sudo apt install -y git linux-headers-generic dkms && \
-wget https://github.com/RinCat/RTL88x2BU-Linux-Driver/archive/master.zip && \
-unzip master.zip && \
-rm master.zip && \
+sudo apt install -y git linux-headers-generic dkms
+if [ ! -d "RTL88x2BU-Linux-Driver-master" ]; then
+    wget https://github.com/RinCat/RTL88x2BU-Linux-Driver/archive/master.zip && \
+    unzip master.zip && \
+    rm master.zip
+fi
 cd RTL88x2BU-Linux-Driver-master && \
 sudo make uninstall && \
 make clean && \
