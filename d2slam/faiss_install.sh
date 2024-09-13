@@ -8,4 +8,4 @@ git clone https://github.com/facebookresearch/faiss.git && \
       sudo make -C build -j4 faiss && \
       sudo make -C build -j4 install
 
-sudo rm -r ~/workspace/setup/d2slam/faiss
+# sudo rm -r ~/workspace/setup/d2slam/faiss

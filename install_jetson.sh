@@ -11,7 +11,7 @@ sudo apt-get install -y wget curl lsb-release git \
       libglib2.0-dev \
       libyaml-cpp-dev \
       libdw-dev libdwarf-dev \
-      sudo apt install -y \
+      python3-pip \
 
 # update cmake
 bash d2slam/cmake_update.sh
@@ -21,6 +21,9 @@ bash d2slam/ceres_install.sh
 
 # librealsense
 bash utils/realsense_install.sh
+
+# tplink
+bash utils/tplink_install.sh
 
 # install ROS
 bash utils/ros_install.sh

@@ -39,6 +39,7 @@ gecho "Setup catkin"
 sudo apt-get install python3-catkin
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
+catkin source
 catkin build -DCMAKE_BUILD_TYPE=Release
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc

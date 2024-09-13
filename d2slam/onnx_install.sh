@@ -5,7 +5,7 @@ sudo apt install -y libopenblas-dev
 cd $HOME/workspace/setup && \
       git clone --recursive git@github.com:AgriSwarm/onnxruntime.git && \
       cd onnxruntime && \
-      git checkout tags/v${ONNX_VERSION}
+      # git checkout tags/v${ONNX_VERSION}
       sudo bash ./build.sh --config Release --build_shared_lib --parallel \
       --use_cuda --cudnn_home /usr/ --cuda_home /usr/local/cuda --skip_test \
       --use_tensorrt --tensorrt_home /usr/ &&\
