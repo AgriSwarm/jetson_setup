@@ -13,8 +13,6 @@ ENABLE_NEON="ON"
 
 cd $HOME/workspace/setup || exit 1
 
-sudo apt update && \
-sudo apt install libgtk2.0-dev -y && \
 wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -O opencv.zip && \
 unzip opencv.zip && \
 rm opencv.zip && \

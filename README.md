@@ -7,7 +7,7 @@
 
 2. Register the pub-key into the GitHub.
 
-3. `bash install_jetson.sh`
+3. `sudo -E -u $USER bash install_jetson.sh`
 
 ## Links
 
