@@ -5,58 +5,58 @@ set -e
 export HOME=$(getent passwd $(logname) | cut -d: -f6)
 
 # install dependencies
-sudo apt-get -y update && \
-sudo TZ=japan apt-get -y install tzdata && \
-sudo apt-get install -y wget curl lsb-release git \
-    libatlas-base-dev \
-    libeigen3-dev \
-    libgoogle-glog-dev \
-    libsuitesparse-dev \
-    libglib2.0-dev \
-    libyaml-cpp-dev \
-    libdw-dev libdwarf-dev \
-    python3-pip
+# sudo apt-get -y update && \
+# sudo TZ=japan apt-get -y install tzdata && \
+# sudo apt-get install -y wget curl lsb-release git \
+#    libatlas-base-dev \
+#    libeigen3-dev \
+#    libgoogle-glog-dev \
+#    libsuitesparse-dev \
+#    libglib2.0-dev \
+#    libyaml-cpp-dev \
+#    libdw-dev libdwarf-dev \
+#    python3-pip
 
 # update cmake
-bash d2slam/cmake_update.sh
+# bash d2slam/cmake_update.sh
 
 # ceres
-bash d2slam/ceres_install.sh
+# bash d2slam/ceres_install.sh
 
 # librealsense
-bash utils/realsense_install.sh
+# bash utils/realsense_install.sh
 
 # tplink
-bash utils/tplink_install.sh
+# bash utils/tplink_install.sh
 
 # install ROS
-bash utils/ros_install.sh
+# bash utils/ros_install.sh
 
 # lcm
-cd $HOME/workspace/setup || exit 1
-git clone https://github.com/lcm-proj/lcm && \
-cd lcm && \
-git checkout tags/v1.4.0 && \
-mkdir build && cd build && \
-sudo cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF .. && \
-sudo make -j2 install
+# cd $HOME/workspace/setup || exit 1
+# git clone https://github.com/lcm-proj/lcm && \
+# cd lcm && \
+# git checkout tags/v1.4.0 && \
+# mkdir build && cd build && \
+# sudo cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF .. && \
+# sudo make -j2 install
 
 # opengv
-cd $HOME/workspace/setup || exit 1
-git clone https://github.com/HKUST-Swarm/opengv && \
-mkdir opengv/build && cd opengv/build && \
-sudo cmake .. && sudo make -j4 && \
-sudo make -j4 install
+# cd $HOME/workspace/setup || exit 1
+# git clone https://github.com/HKUST-Swarm/opengv && \
+# mkdir opengv/build && cd opengv/build && \
+# sudo cmake .. && sudo make -j4 && \
+# sudo make -j4 install
 
 # backword
-sudo wget https://raw.githubusercontent.com/bombela/backward-cpp/master/backward.hpp -O /usr/local/include/backward.hpp
+# sudo wget https://raw.githubusercontent.com/bombela/backward-cpp/master/backward.hpp -O /usr/local/include/backward.hpp
 
 # libtorch
-cd $HOME/workspace/setup || exit 1
-sudo pip3 install --no-cache https://developer.download.nvidia.com/compute/redist/jp/v50/pytorch/torch-1.12.0a0+84d1cb9.nv22.4-cp38-cp38-linux_aarch64.whl
+# cd $HOME/workspace/setup || exit 1
+# sudo pip3 install --no-cache https://developer.download.nvidia.com/compute/redist/jp/v50/pytorch/torch-1.12.0a0+84d1cb9.nv22.4-cp38-cp38-linux_aarch64.whl
 
 # onnx
-bash d2slam/onnx_install.sh
+sudo -E -u $USER bash d2slam/onnx_install.sh
 
 # faiss
 bash d2slam/faiss_install.sh
