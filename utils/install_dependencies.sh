@@ -37,4 +37,6 @@ sudo apt-get install -y \
     unzip \
     libdw-dev \
     vim \
-    xterm \
+    xterm && \
+sudo apt-get install -y \
+    jetson-stats \

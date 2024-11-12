@@ -22,7 +22,9 @@ source ~/.bashrc && \
 sudo apt-get install -y python3-rosdep python3-rosinstall \
     python3-rosinstall-generator python3-wstool build-essential \
     ros-${ROS_VERSION}-ros-numpy ros-${ROS_VERSION}-rviz-visual-tools \
-    ros-${ROS_VERSION}-mavros* ros-${ROS_VERSION}-ddynamic-reconfigure && \
+    ros-${ROS_VERSION}-mavros* ros-${ROS_VERSION}-ddynamic-reconfigure \
+    ros-noetic-jsk-visualization \
+    && \
 gecho "Initialize rosdep" && \
 sudo rosdep init && \
 rosdep update && \
