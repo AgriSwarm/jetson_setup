@@ -8,7 +8,7 @@ ONNX_VERSION=1.13.1
 
 # Install ONNXRuntime with CUDA and TensorRT
 cd $HOME/workspace/setup || exit 1
-git clone --recursive git@github.com:AgriSwarm/onnxruntime.git && \
+git clone --recursive https://github.com/Microsoft/onnxruntime && \
 cd onnxruntime && \
 git checkout tags/v${ONNX_VERSION}
 sudo bash ./build.sh --config Release --build_shared_lib --parallel \
