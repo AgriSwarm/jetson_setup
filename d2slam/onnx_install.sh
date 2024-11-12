@@ -4,7 +4,7 @@
 set -e
 export HOME=$(getent passwd $(logname) | cut -d: -f6)
 
-ONNX_VERSION=1.12.1
+ONNX_VERSION=1.13.1
 
 # Install ONNXRuntime with CUDA and TensorRT
 # cd $HOME/workspace/setup || exit 1

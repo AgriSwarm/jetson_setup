@@ -3,7 +3,7 @@
 # エラーが発生した場合にスクリプトを停止
 set -e
 
-CMAKE_VERSION=3.23.1
+CMAKE_VERSION=3.24.1
 cd $HOME/workspace/setup || exit 1
 
 # ディレクトリが既に存在する場合にエラーを防ぐ

@@ -28,4 +28,13 @@ sudo apt-get install -y \
     libglu1-mesa-dev \
     at \
     linux-headers-generic \
-    dkms
+    dkms \
+    net-tools \
+    htop \
+    xterm \
+    gdb \
+    zip \
+    unzip \
+    libdw-dev \
+    vim \
+    xterm \

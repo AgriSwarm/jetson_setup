@@ -3,12 +3,12 @@
 # エラーが発生した場合にスクリプトを停止
 set -e
 
-CMAKE_VERSION=3.23.1
+CMAKE_VERSION=3.24.1
 OPENCV_VERSION=4.6.0
 ROS_VERSION=noetic
 # Only 7.2 for NX
 # 5.3 for Jetson nano and 6.2 for Jetson TX2
-CUDA_ARCH_BIN="7.2"
+CUDA_ARCH_BIN="8.7"
 ENABLE_NEON="ON"
 
 cd $HOME/workspace/setup || exit 1
