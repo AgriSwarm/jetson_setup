@@ -38,5 +38,4 @@ sudo apt-get install -y \
     libdw-dev \
     vim \
     xterm && \
-sudo apt-get install -y \
-    jetson-stats \
+sudo -H pip3 install -U jetson-stats\
