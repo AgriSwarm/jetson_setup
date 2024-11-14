@@ -18,3 +18,5 @@ sudo -E -u $USER bash d2slam/onnx_install.sh
 sudo -E -u $USER bash d2slam/faiss_install.sh
 sudo -E -u $USER bash d2slam/cv2_with_cuda_install.sh
 sudo -E -u $USER bash setup_ros_pkg.sh
+sudo -E -u $USER bash utils/alias.sh
+sudo -E -u $USER bash utils/service_setup.sh
