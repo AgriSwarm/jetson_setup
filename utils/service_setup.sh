@@ -52,11 +52,11 @@ mkdir -p "$BACKUP_DIR"
 # 不要なサービスの無効化
 log "不要なサービスを無効化しています..."
 services_to_disable=(
-    "networkd-dispatcher.service"
-    "alsa-restore.service"
-    "avahi-daemon.service"
-    "console-setup.service"
-    "ModemManager.service"
+    # "networkd-dispatcher.service"
+    # "alsa-restore.service"
+    # "avahi-daemon.service"
+    # "console-setup.service"
+    # "ModemManager.service"
 )
 
 for service in "${services_to_disable[@]}"; do
@@ -67,30 +67,30 @@ for service in "${services_to_disable[@]}"; do
 done
 
 # alsa-restore.service のマスク
-systemctl mask alsa-restore.service || error_log "alsa-restore.service のマスクに失敗しました"
+# systemctl mask alsa-restore.service || error_log "alsa-restore.service のマスクに失敗しました"
 
 # /etc/init.d/rc の設定
 # 既存の設定をバックアップ
 cp /etc/init.d/rc "$BACKUP_DIR/" || error_log "rc ファイルのバックアップに失敗しました"
 
-# CONCURRENCY が既に設定されているか確認
-if ! grep -q "^CONCURRENCY=shell" /etc/init.d/rc; then
-    echo "CONCURRENCY=shell" >> /etc/init.d/rc
-fi
+# # CONCURRENCY が既に設定されているか確認
+# if ! grep -q "^CONCURRENCY=shell" /etc/init.d/rc; then
+#     echo "CONCURRENCY=shell" >> /etc/init.d/rc
+# fi
 
-# extlinux.conf の設定
-if [ -f "/boot/extlinux/extlinux.conf" ]; then
-    # 既存の設定をバックアップ
-    cp /boot/extlinux/extlinux.conf "$BACKUP_DIR/" || error_log "extlinux.conf のバックアップに失敗しました"
+# # extlinux.conf の設定
+# if [ -f "/boot/extlinux/extlinux.conf" ]; then
+#     # 既存の設定をバックアップ
+#     cp /boot/extlinux/extlinux.conf "$BACKUP_DIR/" || error_log "extlinux.conf のバックアップに失敗しました"
     
-    if grep -q "^APPEND" /boot/extlinux/extlinux.conf; then
-        if ! grep -q "quiet splash" /boot/extlinux/extlinux.conf; then
-            sed -i '/^APPEND/ s/$/ quiet splash/' /boot/extlinux/extlinux.conf
-        fi
-    else
-        echo "APPEND quiet splash" >> /boot/extlinux/extlinux.conf
-    fi
-fi
+#     if grep -q "^APPEND" /boot/extlinux/extlinux.conf; then
+#         if ! grep -q "quiet splash" /boot/extlinux/extlinux.conf; then
+#             sed -i '/^APPEND/ s/$/ quiet splash/' /boot/extlinux/extlinux.conf
+#         fi
+#     else
+#         echo "APPEND quiet splash" >> /boot/extlinux/extlinux.conf
+#     fi
+# fi
 
 # irqbalance のインストールと設定
 log "irqbalance をインストールしています..."
@@ -124,7 +124,7 @@ for service_file in "$CONFIG_DIR"/*"$SERVICE_EXT"; do
     fi
 done
 
-systemctl set-default multi-user.target || error_log "CUIモードの設定に失敗しました"
+# systemctl set-default multi-user.target || error_log "CUIモードの設定に失敗しました"
 
 # systemdをリロード
 systemctl daemon-reload || error_log "systemdのリロードに失敗しました"
