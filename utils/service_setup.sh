@@ -6,7 +6,7 @@ set -eu
 set -o pipefail
 
 # サービスファイルのディレクトリ
-CONFIG_DIR="$HOME/workspace/setup/configs"
+CONFIG_DIR="/home/initial/workspace/setup/configs"
 
 # サービスファイルの拡張子
 SERVICE_EXT=".service"
