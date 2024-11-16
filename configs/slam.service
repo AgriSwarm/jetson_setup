@@ -1,15 +1,15 @@
 [Unit]
-Description=duckey core launcher
-After=roscore.service
-Requires=roscore.service
+Description=D2VINS SLAM Screen Service
+After=duckey-core-screen.service
+Requires=duckey-core-screen.service
 
 [Service]
+Type=forking
 User=initial
-ExecStartPre=/bin/bash -l -c 'rostopic list'
-ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins slam.launch'
-Type=simple
+ExecStart=/usr/bin/screen -dmS slam roslaunch d2vins slam.launch
+ExecStop=/usr/bin/screen -S slam -X quit
 Restart=always
-RestartSec=1s
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

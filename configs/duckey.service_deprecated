@@ -1,0 +1,15 @@
+[Unit]
+Description=duckey core launcher
+After=roscore.service dev-ttyTHS1.device
+Requires=roscore.service lcm-multicast-setup.service dev-ttyTHS1.device
+
+[Service]
+User=initial
+ExecStartPre=/bin/bash -l -c 'rostopic list'
+ExecStart=/usr/bin/screen -S duckey -ADm bash -l -c 'roslaunch hardware_utils duckey_core.launch '
+Type=simple
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

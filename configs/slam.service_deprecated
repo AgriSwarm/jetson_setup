@@ -1,0 +1,15 @@
+[Unit]
+Description=duckey core launcher
+After=roscore.service
+Requires=roscore.service
+
+[Service]
+User=initial
+ExecStartPre=/bin/bash -l -c 'rostopic list'
+ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins slam.launch'
+Type=simple
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

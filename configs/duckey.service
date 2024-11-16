@@ -1,15 +1,15 @@
 [Unit]
-Description=duckey core launcher
-After=roscore.service dev-ttyTHS1.device
-Requires=roscore.service lcm-multicast-setup.service dev-ttyTHS1.device
+Description=Duckey Core Screen Service
+After=roscore-screen.service dev-ttyTHS0.device
+Requires=roscore-screen.service dev-ttyTHS0.device
 
 [Service]
+Type=forking
 User=initial
-ExecStartPre=/bin/bash -l -c 'rostopic list'
-ExecStart=/usr/bin/screen -S duckey -ADm bash -l -c 'roslaunch hardware_utils duckey_core.launch '
-Type=simple
+ExecStart=/usr/bin/screen -dmS infra roslaunch hardware_utils duckey_core.launch fcu_url:="/dev/ttyTHS1:500000"
+ExecStop=/usr/bin/screen -S infra -X quit
 Restart=always
-RestartSec=1s
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

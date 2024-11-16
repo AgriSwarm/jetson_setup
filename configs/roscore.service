@@ -1,14 +1,14 @@
 [Unit]
-Description=ROSCORE launcher
-After=NetworkManager.service
-Requires=NetworkManager.service
+Description=ROS Core Screen Service
+After=network.target
 
 [Service]
+Type=forking
 User=initial
-ExecStart=/usr/bin/screen -S roscore -ADm bash -l -c 'roscore'
-Type=simple
+ExecStart=/usr/bin/screen -dmS roscore roscore
+ExecStop=/usr/bin/screen -S roscore -X quit
 Restart=always
-RestartSec=1s
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
