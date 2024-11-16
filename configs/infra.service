@@ -6,7 +6,7 @@ Requires=roscore.service dev-ttyTHS0.device
 [Service]
 User=initial
 ExecStartPre=/bin/bash -l -c 'rostopic list'
-ExecStart=/usr/bin/screen -S infra -ADm bash -l -c 'roslaunch hardware_utils duckey_core.launch '
+ExecStart=/usr/bin/screen -S infra -ADm bash -l -c 'roslaunch hardware_utils duckey_core.launch fcu_url:="/dev/ttyTHS0:500000"'
 Type=simple
 Restart=always
 RestartSec=1s

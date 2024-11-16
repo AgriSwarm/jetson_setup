@@ -33,6 +33,7 @@ PROFILE_PATH="${HOME}/.bash_profile"
 LINES_TO_ADD=(
     "source \${HOME}/.bashrc"
     "source \${HOME}/catkin_ws/devel/setup.bash"
+    export ROS_MASTER_URI='http://localhost:11311/'
 )
 
 # ファイルが存在しない場合は作成
