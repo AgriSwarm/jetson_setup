@@ -29,6 +29,8 @@ gecho "Initialize rosdep" && \
 sudo rosdep init && \
 rosdep update && \
 sudo apt-get install -y python3-catkin-tools && \
+sudo /opt/ros/noetic/lib/mavros/install_geographiclib_datasets.sh && \
+
 gecho "Setup catkin" && \
 sudo apt-get install python3-catkin && \
 mkdir -p ~/catkin_ws/src && \

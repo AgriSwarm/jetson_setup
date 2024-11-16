@@ -10,7 +10,7 @@ ONNX_VERSION=1.13.1
 cd $HOME/workspace/setup || exit 1
 git clone --recursive https://github.com/Microsoft/onnxruntime && \
 cd onnxruntime && \
-git checkout tags/v${ONNX_VERSION}
+git checkout tags/v${ONNX_VERSION} && \
 sudo bash ./build.sh --config Release --build_shared_lib --parallel \
  --use_cuda --cudnn_home /usr/ --cuda_home /usr/local/cuda --skip_test \
  --use_tensorrt --tensorrt_home /usr/ && \
@@ -21,4 +21,4 @@ sudo make -j4 install && \
 
 wget https://nvidia.box.com/shared/static/v59xkrnvederwewo2f1jtv6yurl92xso.whl -O onnxruntime_gpu-1.12.1-cp38-cp38-linux_aarch64.whl && \
 pip3 install onnxruntime_gpu-1.12.1-cp38-cp38-linux_aarch64.whl && \
-# sudo rm onnxruntime_gpu-1.12.1-cp38-cp38-linux_aarch64.whl
+sudo rm onnxruntime_gpu-1.12.1-cp38-cp38-linux_aarch64.whl

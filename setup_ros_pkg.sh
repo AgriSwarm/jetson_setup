@@ -26,3 +26,6 @@ rm -rf models
 wget -O models.zip "https://www.dropbox.com/scl/fi/zdo90dicmqujwio22l8xn/models.zip?rlkey=hvxsmrao904lle3wnrhoid8n7&dl=1" && \
 unzip models.zip && \
 rm models.zip
+
+# permission
+chmod +x ~/catkin_ws/src/agri_resources/scripts/network_switch.sh
