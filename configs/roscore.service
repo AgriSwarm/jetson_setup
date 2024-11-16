@@ -1,16 +1,14 @@
 [Unit]
-Description=ROS Core Screen Service
-After=network.target
+Description=ROSCORE launcher
+After=NetworkManager.service
+Requires=NetworkManager.service
 
 [Service]
-Type=forking
 User=initial
-Environment="HOME=/home/initial"
-WorkingDirectory=/home/initial
-ExecStart=/usr/bin/screen -dmS roscore /bin/bash -c "source /opt/ros/noetic/setup.bash && roscore"
-ExecStop=/usr/bin/screen -S roscore -X quit
+ExecStart=/usr/bin/screen -S roscore -ADm bash -l -c 'roscore'
+Type=simple
 Restart=always
-RestartSec=10
+RestartSec=1s
 
 [Install]
 WantedBy=multi-user.target

@@ -1,12 +1,12 @@
 [Unit]
 Description=duckey core launcher
-After=roscore.service dev-ttyTHS0.device
-Requires=roscore.service dev-ttyTHS0.device
+After=roscore.service
+Requires=roscore.service
 
 [Service]
 User=initial
 ExecStartPre=/bin/bash -l -c 'rostopic list'
-ExecStart=/usr/bin/screen -S duckey -ADm bash -l -c 'roslaunch hardware_utils duckey_core.launch '
+ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins slam.launch'
 Type=simple
 Restart=always
 RestartSec=1s
