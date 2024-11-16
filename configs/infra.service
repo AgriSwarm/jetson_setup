@@ -1,7 +1,7 @@
 [Unit]
 Description=duckey core launcher
-After=roscore.service dev-ttyTHS1.device
-Requires=roscore.service lcm-multicast-setup.service dev-ttyTHS1.device
+After=roscore.service dev-ttyTHS0.device
+Requires=roscore.service dev-ttyTHS0.device
 
 [Service]
 User=initial
