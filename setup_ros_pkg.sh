@@ -29,3 +29,4 @@ rm models.zip
 
 # permission
 chmod +x ~/catkin_ws/src/agri_resources/scripts/network_switch.sh
+chmod +x ~/catkin_ws/src/agri_resources/scripts/fcu_comm.sh

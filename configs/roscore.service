@@ -5,7 +5,9 @@ After=network.target
 [Service]
 Type=forking
 User=initial
-ExecStart=/usr/bin/screen -dmS roscore roscore
+Environment="HOME=/home/initial"
+WorkingDirectory=/home/initial
+ExecStart=/usr/bin/screen -dmS roscore /bin/bash -c "source /opt/ros/noetic/setup.bash && roscore"
 ExecStop=/usr/bin/screen -S roscore -X quit
 Restart=always
 RestartSec=10
