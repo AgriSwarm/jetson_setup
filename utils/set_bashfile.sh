@@ -25,3 +25,30 @@ alias gui='sudo systemctl set-default graphical'
 EOF
 
 source ~/.bashrc
+
+# .bash_profileのパスを設定
+PROFILE_PATH="${HOME}/.bash_profile"
+
+# 追加する行
+LINES_TO_ADD=(
+    "source \${HOME}/.bashrc"
+    "source \${HOME}/catkin_ws/devel/setup.bash"
+)
+
+# ファイルが存在しない場合は作成
+if [ ! -f "$PROFILE_PATH" ]; then
+    touch "$PROFILE_PATH"
+    echo "Created new .bash_profile"
+fi
+
+# 各行について、まだ存在しない場合のみ追加
+for line in "${LINES_TO_ADD[@]}"; do
+    if ! grep -Fxq "$line" "$PROFILE_PATH"; then
+        echo "$line" >> "$PROFILE_PATH"
+        echo "Added: $line"
+    else
+        echo "Already exists: $line"
+    fi
+done
+
+echo "Process completed"

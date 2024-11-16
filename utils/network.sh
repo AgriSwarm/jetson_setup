@@ -3,6 +3,16 @@
 # エラーが発生したら即座に終了するように設定
 set -e
 
+# 引数の数をチェック
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <SSID> <パスワード>"
+    exit 1
+fi
+
+# 引数から値を取得
+wifi="$1"
+password="$2"
+
 # エラーハンドリング関数
 error_handler() {
     echo "エラーが発生しました: 行 $1"
@@ -11,9 +21,6 @@ error_handler() {
 
 # エラーが発生した行番号を取得してエラーハンドラーを呼び出す
 trap 'error_handler ${LINENO}' ERR
-
-wifi="Buffalo-G-FE8E"
-password="u4rafcee64nn3"
 
 echo "Wi-Fiに接続を試みています..."
 
@@ -26,7 +33,7 @@ fi
 echo "Wi-Fi接続に成功しました"
 
 # IPアドレスを取得（最初のアドレスのみ）
-ip_address=$(hostname -I | awk '{print $1}')
+ip_address=$(ip addr show wlan0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)
 
 # IPアドレスが取得できたか確認
 if [ -z "$ip_address" ]; then
@@ -47,5 +54,3 @@ fi
 
 echo "Wi-Fi設定が完了しました"
 echo "設定されたIPアドレス: $ip_with_mask"
-
-net

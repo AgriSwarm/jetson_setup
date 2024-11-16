@@ -18,5 +18,6 @@ sudo -E -u $USER bash d2slam/onnx_install.sh
 sudo -E -u $USER bash d2slam/faiss_install.sh
 sudo -E -u $USER bash d2slam/cv2_with_cuda_install.sh
 sudo -E -u $USER bash setup_ros_pkg.sh
-sudo -E -u $USER bash utils/alias.sh
-sudo bash utils/service_setup.sh
+sudo -E -u $USER bash utils/set_bashfile.sh
+sudo bash utils/network.sh "Buffalo-G-FE8E" "u4rafcee64nn3"
+sudo bash utils/service_setup.sh 
