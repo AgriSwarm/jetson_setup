@@ -5,8 +5,9 @@ Requires=roscore.service
 
 [Service]
 User=initial
+Environment=BASH_ENV=/home/initial/.bash_profile
 ExecStartPre=/bin/bash -l -c 'rostopic list'
-ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins slam.launch'
+ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins slam.launch self_id:=${DRONE_ID}'
 Type=simple
 Restart=always
 RestartSec=1s
