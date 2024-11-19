@@ -56,7 +56,6 @@ services_to_disable=(
     # "alsa-restore.service"
     # "avahi-daemon.service"
     # "console-setup.service"
-    # "ModemManager.service"
 )
 
 for service in "${services_to_disable[@]}"; do
