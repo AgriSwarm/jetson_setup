@@ -7,7 +7,7 @@ Requires=roscore.service
 User=initial
 EnvironmentFile=/home/initial/.bash_profile
 ExecStartPre=/bin/bash -l -c 'rostopic list'
-ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins slam_orin.launch self_id:=${DRONE_ID}'
+ExecStart=/usr/bin/screen -S slam -ADm bash -l -c 'roslaunch d2vins planner_orin.launch self_id:=${DRONE_ID}'
 Type=simple
 Restart=always
 RestartSec=1s
