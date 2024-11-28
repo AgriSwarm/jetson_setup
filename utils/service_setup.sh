@@ -117,9 +117,9 @@ for service_file in "$CONFIG_DIR"/*"$SERVICE_EXT"; do
         chmod 644 "/etc/systemd/system/$service_name" || error_log "$service_name のパーミッション設定に失敗しました"
         
         # サービスを有効化
-        systemctl enable "$service_name" || error_log "$service_name の有効化に失敗しました"
+        # systemctl enable "$service_name" || error_log "$service_name の有効化に失敗しました"
         
-        log "$service_name を登録し、有効化しました"
+        log "$service_name を登録しました"
     fi
 done
 
