@@ -4,14 +4,15 @@
 set -e
 
 # 引数の数をチェック
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <SSID> <パスワード>"
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <SSID> <パスワード> <AP名>"
     exit 1
 fi
 
 # 引数から値を取得
 wifi="$1"
 password="$2"
+ap_name="$3"
 
 # エラーハンドリング関数
 error_handler() {
@@ -51,6 +52,16 @@ if ! sudo nmcli con mod "$wifi" ipv4.addresses "$ip_with_mask"; then
     echo "IP設定の変更に失敗しました"
     exit 1
 fi
+
+# APモードの設定
+nmcli con add type wifi ifname wlan0 mode ap con-name "$ap_name" ssid "$ap_name"
+nmcli con modify "$ap_name" 802-11-wireless.band bg
+nmcli con modify "$ap_name" 802-11-wireless.channel 1
+nmcli con modify "$ap_name" 802-11-wireless-security.key-mgmt wpa-psk
+nmcli con modify "$ap_name" 802-11-wireless-security.psk "$ap_name"
+nmcli con modify "$ap_name" ipv4.method shared
+nmcli con modify "$ap_name" ipv4.addr 10.0.0.1/24
+nmcli con up "$ap_name"
 
 echo "Wi-Fi設定が完了しました"
 echo "設定されたIPアドレス: $ip_with_mask"
