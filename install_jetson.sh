@@ -12,7 +12,7 @@ sudo -E -u $USER bash utils/gpio_install.sh
 sudo -E -u $USER bash utils/ros_install.sh
 sudo -E -u $USER bash utils/lcm_install.sh
 sudo wget https://raw.githubusercontent.com/bombela/backward-cpp/master/backward.hpp -O /usr/local/include/backward.hpp
-sudo pip3 install --no-cache https://developer.download.nvidia.com/compute/redist/jp/v50/pytorch/torch-1.12.0a0+84d1cb9.nv22.4-cp38-cp38-linux_aarch64.whl
+# sudo pip3 install --no-cache https://developer.download.nvidia.com/compute/redist/jp/v50/pytorch/torch-1.12.0a0+84d1cb9.nv22.4-cp38-cp38-linux_aarch64.whl
 sudo -E -u $USER bash d2slam/opengv_install.sh
 sudo -E -u $USER bash d2slam/onnx_install.sh
 sudo -E -u $USER bash d2slam/faiss_install.sh

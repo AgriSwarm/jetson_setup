@@ -16,7 +16,7 @@ echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
 catkin config -DCMAKE_BUILD_TYPE=Release \
     --cmake-args -DONNXRUNTIME_LIB_DIR=/usr/local/lib/ \
     -DONNXRUNTIME_INC_DIR=/usr/local/include/onnxruntime/core/session/ \
-    -DTorch_DIR=/usr/local/lib/python3.8/dist-packages/torch/share/cmake/Torch
+    -DTorch_DIR=/home/initial/.local/lib/python3.8/site-packages/torch/share/cmake/Torch
 
 catkin build -j3
 
