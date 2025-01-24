@@ -3,10 +3,10 @@
 cat << 'EOF' >> ~/.bashrc
 
 # full
-alias stop='sudo systemctl stop slam infra'
-alias start='sudo systemctl start slam infra'
-alias enable='sudo systemctl enable roscore infra slam'
-alias disable='sudo systemctl disable infra slam'
+alias stop='sudo systemctl stop slam infra detector'
+alias start='sudo systemctl start slam infra detector'
+alias enable='sudo systemctl enable roscore infra slam detector'
+alias disable='sudo systemctl disable infra slam detector'
 # roscore
 alias start_core='sudo systemctl start roscore'
 alias stop_core='sudo systemctl stop roscore'

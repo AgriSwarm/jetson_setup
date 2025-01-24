@@ -1,0 +1,16 @@
+[Unit]
+Description=duckey core launcher
+After=roscore.service
+Requires=roscore.service
+
+[Service]
+User=initial
+EnvironmentFile=/home/initial/.bash_profile
+ExecStartPre=/bin/bash -l -c 'rostopic list'
+ExecStart=/usr/bin/screen -S detector -ADm bash -l -c 'roslaunch pose_estimator detect.launch self_id:=${DRONE_ID}'
+Type=simple
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
