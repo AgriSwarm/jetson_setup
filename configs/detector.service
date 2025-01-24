@@ -6,6 +6,7 @@ Requires=roscore.service
 [Service]
 User=initial
 EnvironmentFile=/home/initial/.bash_profile
+Environment=PYTHONPATH=/home/initial/catkin_ws/src/agri_eye_ros1/pose_estimator:${PYTHONPATH}
 ExecStartPre=/bin/bash -l -c 'rostopic list'
 ExecStart=/usr/bin/screen -S detector -ADm bash -l -c 'roslaunch pose_estimator detect.launch self_id:=${DRONE_ID}'
 Type=simple
